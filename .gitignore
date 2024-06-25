@@ -1,0 +1,14 @@
+# custom configuration and secret env. variables
+.env
+
+# .go files in this directory are generated from `templ generate`
+views/*/*_templ.go
+
+# executable
+bin/
+
+# temporary files e.g. logs
+tmp/
+
+# css is created by prod/dev so should not be tracked
+assets/styles.css
