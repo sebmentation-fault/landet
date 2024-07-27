@@ -1,12 +1,26 @@
 package home
 
 import (
-	"github.com/sebmentation-fault/landet/views/layouts"
+"github.com/sebmentation-fault/landet/views/layouts"
 )
 
 templ Index() {
-	@layouts.Base() {
-		<h1>Index page</h1>
-		<p>Hello, world!</p>
-	}
+@layouts.Base("landet") {
+<h1 class="text-center font-bold text-3xl">Welcome!</h1>
+<section>
+	<h2 class="font-semibold text-xl">Your groups</h2>
+	<div class="grid grid-cols-2 md:grid-cold-3">
+		<!-- list of all the user's groups -->
+		<!-- two extra buttons - create and join -->
+		<button id="join-group-btn"
+			class="bg-gray-100 hover:bg-gray-300 w-32 h-32 md:w-44 md:h-44 lg:w-52 lg:h-52">
+			<p>Join</p>
+		</button>
+		<button id="create-group-btn"
+			class="bg-gray-100 hover:bg-gray-300 w-32 h-32 md:w-44 md:h-44 lg:w-52 lg:h-52">
+			<p>Create</p>
+		</button>
+	</div>
+</section>
+}
 }

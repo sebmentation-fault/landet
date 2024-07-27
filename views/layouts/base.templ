@@ -1,17 +1,68 @@
 package layouts
 
-templ Base() {
-	<!DOCTYPE html>
-	<html lang="en">
-		<head>
-			<title>"landet"</title>
-			<meta charset="UTF-8"/>
-			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-			<link rel="stylesheet" href="/static/styles.css" type="text/css"/>
-			<script src="https://unpkg.com/htmx.org@2.0.0" integrity="sha384-wS5l5IKJBvK6sPTKa2WZ1js3d947pvWXbPJ1OmWfEuxLgeHcEbjUUA5i9V5ZkpCw" crossorigin="anonymous" defer></script>
-		</head>
-		<body>
-			{ children... }
-		</body>
-	</html>
+import "github.com/sebmentation-fault/landet/views/components/contact_info"
+
+templ Base(title string) {
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>{ title }</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="/static/styles.css" type="text/css" />
+	<script src="https://unpkg.com/htmx.org@2.0.0"
+		integrity="sha384-wS5l5IKJBvK6sPTKa2WZ1js3d947pvWXbPJ1OmWfEuxLgeHcEbjUUA5i9V5ZkpCw" crossorigin="anonymous"
+		defer></script>
+</head>
+
+<body class="flex flex-col h-screen justify-between">
+	<header class="bg-red-500 py-6">
+		<nav class="container mx-auto flex justify-between items-center">
+			<p class="text-2xl text-white font-bold">{ title }</p>
+			<div class="flex space-x-4">
+				<a href="/" class="text-white hover:text-red-400">Home</a>
+			</div>
+		</nav>
+	</header>
+	<main class="flex-1 p-8">
+		{ children... }
+	</main>
+	<footer class="bg-gray-800 text-white py-6">
+		<div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
+			<div class="flex flex-col">
+				<div class="text-lg font-bold">{ title }</div>
+				<div class="text-sm text-gray-400">Join groups, set tasks</div>
+			</div>
+			<div class="flex justify-center md:justify-end space-x-4">
+				<div>
+					<h2 class="font-semibold">Contact</h2>
+					<ul>
+						<li>
+							{ contactinfo.Get().Phonenumber }
+						</li>
+						<li>
+							<a href={ contactinfo.Get().EmailURL }>
+								{ contactinfo.Get().Email }
+							</a>
+						</li>
+					</ul>
+				</div>
+				<div>
+					<h2 class="font-semibold">Other</h2>
+					<ul>
+						<li>
+							Privacy
+						</li>
+						<li>
+							Security
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</footer>
+</body>
+
+</html>
 }

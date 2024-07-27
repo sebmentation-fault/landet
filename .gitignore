@@ -3,6 +3,8 @@
 
 # .go files in this directory are generated from `templ generate`
 views/*/*_templ.go
+# when running templ generate --watch templ creates this file too
+views/*/*_templ.txt
 
 # executable
 bin/

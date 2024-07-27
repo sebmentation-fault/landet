@@ -9,3 +9,9 @@ tmpl:
 
 css:
 	tailwindcss -i views/css/app.css -o assets/styles.css --minify
+
+devtempl:
+	@templ generate --watch
+
+devcss:
+	tailwindcss -i views/css/app.css -o assets/styles.css --watch
